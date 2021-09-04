@@ -11,16 +11,16 @@
     <!-- Header with high score area and timer area -->
     <header id="status">
         <a href="#high-scores"></a>
-        <h3 id="timer"></h3>
+        <h3 id="minutes"></h3>
+        <h4 id="seconds"></h4>
     </header>
     <!-- Title Area-->
  <!--code the html -->
-    <div>   
-        <h1> JAVASCRIPT Quiz Game !  Select the correct answer from the following questions. You have 30 seconds time to answer all. </h1>
-    </div>
-    <div>
+    <div id="start-div">   
+        <h1> JAVASCRIPT Quiz Game !  Select the correct answer from the following questions. You have 30 seconds to answer all. Wrong anser deduts from time remaining. </h1>
         <button id="start">Start</button>
-    </div> 
+    </div>
+     
 <!-- div for the quiz area where the questions and answers populate -->
     <div id="questionArea" style="display: none;">
         <h1 id="question">this is the question</h1>
@@ -31,14 +31,20 @@
             <li><button id="answer4">a4</button></li>
         </ul>
         <hr>
+        <p id="validate"></p>
     </div>
 <!-- div for the high scores -->
-    <div >
+    <div id="intials-section">
         <h3>All Done !</h3>
-        <h4 id="#high-scores">High scores</h4>
-        <label for= "playerScrore">Your Score:</label>
-        <input type="text" id="yourScore">
-
+        <h4 id="#high-scores">High Scores</h4>
+        <label for= "intitials">Your initials:</label>
+        <p id="playerScore">Your score is ..</p>
+        <input type="text" id="txtinitial">
+        <button id="initialSubmit">Submit init</button>
+    </div>
+   <!-- div for shigh scores display -->
+    <div id="score-list">
+            
     </div>
 
     <script src="assets/script.js"></script>
