@@ -46,6 +46,10 @@ var questions = [
         correct: 1
     }
 ];
+
+// event listener to start QuizGame
+document.getElementById('start').onclick = startQuiz;
+
 // load questions from array. Stop timer
 function loadQuestion() {
  if (questionIndex <= questions.length - 1) {
@@ -55,10 +59,10 @@ function loadQuestion() {
     answer3.textContent = questions[questionIndex].answers[2];
     answer4.textContent = questions[questionIndex].answers[3];
     document.getElementById("link-score-list").style.display = "block"; 
-    document.getElementById("answer1").addEventListener("click", checkAnswer());
-    document.getElementById("answer2").addEventListener("click", checkAnswer());
-    document.getElementById("answer3").addEventListener("click", checkAnswer());
-    document.getElementById("answer4").addEventListener("click", checkAnswer());
+    document.getElementById("answer1").addEventListener("click", checkAnswer(answer1));
+    document.getElementById("answer2").addEventListener("click", checkAnswer(answer2));
+    document.getElementById("answer3").addEventListener("click", checkAnswer(answer3));
+    document.getElementById("answer4").addEventListener("click", checkAnswer(answer4));
 
 }else {
     // stop timer funcion
@@ -75,9 +79,9 @@ function stopTimer() {
 };
  
 function checkAnswer(ele)  {
+    // console.log(questions[0].answers[0])
     var id = ele.id.split('')
-
-    if(id[id.length] == questions.questionIndex.answers) {
+    if(questions.correct === questions.answersIndex) {
         playerScore++;
     // display score card
     document.getElementById("playerScore").style.display = "block";
@@ -92,10 +96,9 @@ function checkAnswer(ele)  {
     }
 };
 
-function button(ele)
-
-// put checkAnswer(ele) function here
- 
+function button(ele) {
+    console.log("Hello")
+}
 
 function nextQuestion ()  {
     questionIndex++;
@@ -118,8 +121,6 @@ function startQuiz() {
    window.onload = loadQuestion();
 };
 
-// event listener to start QuizGame
-document.getElementById('start').onclick = startQuiz;
 
 // set time function set timer 
 var timeRemaining = 30;
@@ -137,27 +138,6 @@ function timerStart(){
         }
     }
 };
-
-
-
-// function questionSelect() {
-//     var i = 0;
-// //  check if answer is correct and dsiplays "Correct" or "Wrong" in p tag
-//     var score = 0;
-//     // console.log("test entering question select");
-// if ( questions.correct === questions[i+1].answers) {
-//    // Increase score
-//     score++;
-//         // console.log("test exit score value increase added")
-//     // Alert the user
-//     document.getElementById('validate').innerhtml = "Correct";
-//   } else {
-//      // Alert the user
-//     document.getElementById('validate').innerhtml = "Wrong";
-//   } timeRemaining -= 5;
-//         // console.log("test exit question select");
-// };
-
 
 
 // subtract time for wrong answer function
