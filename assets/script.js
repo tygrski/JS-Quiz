@@ -50,11 +50,16 @@ var questions = [
 function loadQuestion() {
  if (questionIndex <= questions.length - 1) {
     question.textContent = `${(questionIndex + 1)}. ${questions[questionIndex].question}`;
-    answer1.textContent = questions[questionIndex].answers[2];
-    answer2.textContent = questions[questionIndex].answers[3];
-    answer3.textContent = questions[questionIndex].answers[0];
-    answer4.textContent = questions[questionIndex].answers[1];
-    document.getElementById("validate").style.display = "none"; 
+    answer1.textContent = questions[questionIndex].answers[0];
+    answer2.textContent = questions[questionIndex].answers[1];
+    answer3.textContent = questions[questionIndex].answers[2];
+    answer4.textContent = questions[questionIndex].answers[3];
+    document.getElementById("link-score-list").style.display = "block"; 
+    document.getElementById("answer1").addEventListener(click, checkAnswer(ele));
+    document.getElementById("answer2").addEventListener(click, checkAnswer(ele));
+    document.getElementById("answer3").addEventListener(click, checkAnswer(ele));
+    document.getElementById("answer4").addEventListener(click,  checkAnswer(ele));
+
 }else {
     // stop timer funcion
 function stopTimer() {
@@ -65,6 +70,7 @@ function stopTimer() {
     // hide quiz div
     document.getElementById("questionArea").style.display = "none";
         }
+        stopTimer();
     }
 };
  
@@ -74,14 +80,20 @@ function checkAnswer(ele)  {
     if(id[id.length] == questions.questionIndex.answers) {
         playerScore++;
     // display score card
-    // display "Correct"  
+    document.getElementById("playerScore").style.display = "block";
+    // display "Correct" 
+    document.getElementById("validate").style.display = "block";
 } else {
     // subtract time
-    // display "incrret"
-}
+    timeRemaining -= 5
+    // display "incorret"
+    document.getElementById("validate").style.display = "block";
+
+    }
 };
 
 // function button(ele)
+
 // put checkAnswer(ele) function here
 // call nextQuestion()
 

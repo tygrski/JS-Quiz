@@ -10,13 +10,13 @@
 <body>
     <!-- Header with high score area and timer area -->
     <header id="status">
-        <a href="#high-scores"></a>
+        <a id="link-score-list" href="#high-scores"></a>
         <h4 id="seconds">total seconds</h4>
     </header>
     <!-- Title Area-->
  <!--code the html -->
     <div id="start-div">   
-        <h1> JAVASCRIPT Quiz Game ! You have 30 seconds to answer all. Wrong answers deducts from time remaining. </h1>
+        <h1> JAVASCRIPT Quiz Game ! You have 30 seconds to answer all. Wrong answers deduct from time remaining. </h1>
         <button id="start" style="width:100px;height:50px; font-size:30px;">Start</button>
     </div>
      
@@ -24,10 +24,13 @@
     <div id="questionArea" style="display: none;">
         <h1 id="question">this is the question</h1>
         <ul>
-            <li><button id="answer1" oneClick="button()">a1</button></li>
-            <li><button id="answer2" oneClick="button()">a2</button></li>
-            <li><button id="answer3" oneClick="button()">a3</button></li>
-            <li><button id="answer4" oneClick="button()">a4</button></li>
+            <li><button id="answer1">a1</button></li>
+            <br>
+            <li><button id="answer2">a2</button></li>
+            <br>
+            <li><button id="answer3">a3</button></li>
+            <br>
+            <li><button id="answer4">a4</button></li>
         </ul>
         <hr>
         <p id="validate">Correct/Wrong answer</p>
