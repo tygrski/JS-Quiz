@@ -11,14 +11,13 @@
     <!-- Header with high score area and timer area -->
     <header id="status">
         <a href="#high-scores"></a>
-        <h3 id="minutes"></h3>
-        <h4 id="seconds"></h4>
+        <h4 id="seconds">total seconds</h4>
     </header>
     <!-- Title Area-->
  <!--code the html -->
     <div id="start-div">   
-        <h1> JAVASCRIPT Quiz Game !  Select the correct answer from the following questions. You have 30 seconds to answer all. Wrong anser deduts from time remaining. </h1>
-        <button id="start">Start</button>
+        <h1> JAVASCRIPT Quiz Game ! You have 30 seconds to answer all. Wrong answers deducts from time remaining. </h1>
+        <button id="start" style="width:100px;height:50px; font-size:30px;">Start</button>
     </div>
      
 <!-- div for the quiz area where the questions and answers populate -->
@@ -31,7 +30,7 @@
             <li><button id="answer4">a4</button></li>
         </ul>
         <hr>
-        <p id="validate"></p>
+        <p id="validate">Correct/Wrong answer</p>
     </div>
 <!-- div for the high scores -->
     <div id="intials-section">
@@ -40,7 +39,7 @@
         <label for= "intitials">Your initials:</label>
         <p id="playerScore">Your score is ..</p>
         <input type="text" id="txtinitial">
-        <button id="initialSubmit">Submit init</button>
+        <button id="initialSubmit">Submit Initials</button>
     </div>
    <!-- div for shigh scores display -->
     <div id="score-list">
