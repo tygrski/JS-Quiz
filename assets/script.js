@@ -55,10 +55,10 @@ function loadQuestion() {
     answer3.textContent = questions[questionIndex].answers[2];
     answer4.textContent = questions[questionIndex].answers[3];
     document.getElementById("link-score-list").style.display = "block"; 
-    document.getElementById("answer1").addEventListener(click, checkAnswer(ele));
-    document.getElementById("answer2").addEventListener(click, checkAnswer(ele));
-    document.getElementById("answer3").addEventListener(click, checkAnswer(ele));
-    document.getElementById("answer4").addEventListener(click,  checkAnswer(ele));
+    document.getElementById("answer1").addEventListener("click", checkAnswer());
+    document.getElementById("answer2").addEventListener("click", checkAnswer());
+    document.getElementById("answer3").addEventListener("click", checkAnswer());
+    document.getElementById("answer4").addEventListener("click", checkAnswer());
 
 }else {
     // stop timer funcion
@@ -92,15 +92,16 @@ function checkAnswer(ele)  {
     }
 };
 
-// function button(ele)
+function button(ele)
 
 // put checkAnswer(ele) function here
-// call nextQuestion()
+ 
 
-// function nextQuestion ()  {
-//     questionIndex++;
-//     loadQuestion();
-// };
+function nextQuestion ()  {
+    questionIndex++;
+    loadQuestion();
+};
+nextQuestion();
 
 // Start game 
 function startQuiz() {
