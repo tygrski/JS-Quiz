@@ -46,51 +46,62 @@ var questions = [
         correct: 1
     }
 ];
-
+// load questions from array. Stop timer
 function loadQuestion() {
  if (questionIndex <= questions.length - 1) {
-question.textContent = `${(questionIndex + 1)}. ${questions[questionIndex].question}`
-answer1.textContent = questions[questionIndex].answers[0]
-// add more buttons
+    question.textContent = `${(questionIndex + 1)}. ${questions[questionIndex].question}`;
+    answer1.textContent = questions[questionIndex].answers[2];
+    answer2.textContent = questions[questionIndex].answers[3];
+    answer3.textContent = questions[questionIndex].answers[0];
+    answer4.textContent = questions[questionIndex].answers[1];
+    document.getElementById("validate").style.display = "none"; 
 }else {
-    // need stop timer function
+    // stop timer funcion
+function stopTimer() {
+    if (timeRemaining === o) 
+    clearInterval(quizInterval);
     // show high score div 
+    document.getElementById("score-list").style.display = "block";
     // hide quiz div
-}
+    document.getElementById("questionArea").style.display = "none";
+        }
+    }
 };
  
 function checkAnswer(ele)  {
     var id = ele.id.split('')
 
-    if(id[id.length] == questions.questionIndex.answers)
-    playerScore++;
+    if(id[id.length] == questions.questionIndex.answers) {
+        playerScore++;
     // display score card
     // display "Correct"  
 } else {
     // subtract time
     // display "incrret"
+}
 };
 
-function button(ele)
+// function button(ele)
 // put checkAnswer(ele) function here
 // call nextQuestion()
 
-function nextQuestion ()  {
-    questionIndex++;
-    loadQuestion();
-}
+// function nextQuestion ()  {
+//     questionIndex++;
+//     loadQuestion();
+// };
 
 // Start game 
 function startQuiz() {
     // console.log("test enter start qiuiz");
     document.getElementById("start").style.display = "none"; 
+    document.getElementById("score-list").style.display = "none"; 
     // console.log("test break after none");
     document.getElementById("questionArea").style.display = "block";
     questionNumber = 0;
     // console.log("test exit start quiz");
     timerStart();
     // console.log("test calling question select");
-   questionSelect();
+   loadQuestion();
    window.onload = loadQuestion();
 };
 
@@ -114,7 +125,7 @@ function timerStart(){
     }
 };
 
-// stop timer funcion
+
 
 // function questionSelect() {
 //     var i = 0;
