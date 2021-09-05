@@ -23,7 +23,7 @@ var minutes = document.getElementById("minutes");
 var seconds = document.getElementById("seconds");
 var interval 
 var questionIndex = 0;
-
+var playerScore = 0;
 var questions = [
     {
         question: "Which is a JavaScript Data Type ?",
@@ -50,62 +50,6 @@ var questions = [
 // event listener to start QuizGame
 document.getElementById('start').onclick = startQuiz;
 
-// load questions from array. Stop timer
-function loadQuestion() {
- if (questionIndex <= questions.length - 1) {
-    question.textContent = `${(questionIndex + 1)}. ${questions[questionIndex].question}`;
-    answer1.textContent = questions[questionIndex].answers[0];
-    answer2.textContent = questions[questionIndex].answers[1];
-    answer3.textContent = questions[questionIndex].answers[2];
-    answer4.textContent = questions[questionIndex].answers[3];
-    document.getElementById("link-score-list").style.display = "block"; 
-    document.getElementById("answer1").addEventListener("click", checkAnswer(answer1));
-    document.getElementById("answer2").addEventListener("click", checkAnswer(answer2));
-    document.getElementById("answer3").addEventListener("click", checkAnswer(answer3));
-    document.getElementById("answer4").addEventListener("click", checkAnswer(answer4));
-
-}else {
-    // stop timer funcion
-function stopTimer() {
-    if (timeRemaining === o) 
-    clearInterval(quizInterval);
-    // show high score div 
-    document.getElementById("score-list").style.display = "block";
-    // hide quiz div
-    document.getElementById("questionArea").style.display = "none";
-        }
-        stopTimer();
-    }
-};
- 
-function checkAnswer(ele)  {
-    // console.log(questions[0].answers[0])
-    var id = ele.id.split('')
-    if(questions.correct === questions.answersIndex) {
-        playerScore++;
-    // display score card
-    document.getElementById("playerScore").style.display = "block";
-    // display "Correct" 
-    document.getElementById("validate").style.display = "block";
-} else {
-    // subtract time
-    timeRemaining -= 5
-    // display "incorret"
-    document.getElementById("validate").style.display = "block";
-
-    }
-};
-
-function button(ele) {
-    console.log("Hello")
-}
-
-function nextQuestion ()  {
-    questionIndex++;
-    loadQuestion();
-};
-nextQuestion();
-
 // Start game 
 function startQuiz() {
     // console.log("test enter start qiuiz");
@@ -120,7 +64,6 @@ function startQuiz() {
    loadQuestion();
    window.onload = loadQuestion();
 };
-
 
 // set time function set timer 
 var timeRemaining = 30;
@@ -139,11 +82,57 @@ function timerStart(){
     }
 };
 
+// load questions . Stop timer
+function loadQuestion() {
+ if (questionIndex <= questions.length - 1) {
+    question.textContent = `${(questionIndex + 1)}. ${questions[questionIndex].question}`;
+    answer1.textContent = questions[questionIndex].answers[0];
+    answer2.textContent = questions[questionIndex].answers[1];
+    answer3.textContent = questions[questionIndex].answers[2];
+    answer4.textContent = questions[questionIndex].answers[3];
+    document.getElementById("link-score-list").style.display = "block"; 
+    document.getElementById("validate").style.display = "none"; 
+    document.getElementById("answer1").addEventListener("click", checkAnswer(answer1));
+    document.getElementById("answer2").addEventListener("click", checkAnswer(answer2));
+    document.getElementById("answer3").addEventListener("click", checkAnswer(answer3));
+    document.getElementById("answer4").addEventListener("click", checkAnswer(answer4));
+}else {
+    // stop timer funcion
+function stopTimer() {
+    if (timeRemaining === o) 
+    clearInterval(quizInterval);
+    // show high score div 
+    document.getElementById("score-list").style.display = "block";
+    // hide quiz div
+    document.getElementById("questionArea").style.display = "none";
+        }
+        stopTimer();
+    }
+};
+ 
+function checkAnswer(ele)  {
+    if(questions.correct === questions.answersIndex) {
+        playerScore++;
+    // display score card
+    document.getElementById("playerScore").textContent = playerScore
+    document.getElementById("playerScore").style.display = "block";
+    // display "Correct" 
+    document.getElementById("validate").textContent = "Correct !"
+    document.getElementById("validate").style.display = "block";
+} else {
+    // subtract time
+    timeRemaining -= 5
+    // display "incorret"
+    document.getElementById("validate").textContent = "Wrong !"
+    document.getElementById("validate").style.display = "block";
+    }
+};
 
-// subtract time for wrong answer function
-// if(answer is not correct) {
-//     deduct from score
-// };
+function nextQuestion ()  {
+    questionIndex++;
+    loadQuestion();
+};
+nextQuestion();
 
 // score card function; adds scores together()
  
