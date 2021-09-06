@@ -48,7 +48,7 @@ var questions = [
 ];
 
 // event listener to start QuizGame
-document.getElementById('start').onclick = startQuiz;
+start.addEventListener("click", startQuiz);
 
 // Start game 
 function startQuiz() {
@@ -63,6 +63,12 @@ function startQuiz() {
     // console.log("test calling question select");
    loadQuestion();
    window.onload = loadQuestion();
+//    console.log("TEST")
+   answer1.addEventListener("click", checkAnswer())
+   answer2.addEventListener("click", checkAnswer())
+   answer3.addEventListener("click", checkAnswer())
+   answer4.addEventListener("click", checkAnswer())
+   console.log("TEST@")
 };
 
 // set time function set timer 
@@ -82,6 +88,15 @@ function timerStart(){
     }
 };
 
+function stopTimer() {
+    if (timeRemaining === 0) 
+    clearInterval(quizInterval);
+    // show high score div 
+    document.getElementById("score-list").style.display = "block";
+    // hide quiz div
+    document.getElementById("questionArea").style.display = "none";
+        }
+
 // load questions . Stop timer
 function loadQuestion() {
  if (questionIndex <= questions.length - 1) {
@@ -91,26 +106,24 @@ function loadQuestion() {
     answer3.textContent = questions[questionIndex].answers[2];
     answer4.textContent = questions[questionIndex].answers[3];
     document.getElementById("link-score-list").style.display = "block"; 
-    document.getElementById("validate").style.display = "none"; 
-    document.getElementById("answer1").addEventListener("click", checkAnswer(answer1));
-    document.getElementById("answer2").addEventListener("click", checkAnswer(answer2));
-    document.getElementById("answer3").addEventListener("click", checkAnswer(answer3));
-    document.getElementById("answer4").addEventListener("click", checkAnswer(answer4));
+    
 }else {
-    // stop timer funcion
-function stopTimer() {
-    if (timeRemaining === o) 
-    clearInterval(quizInterval);
-    // show high score div 
-    document.getElementById("score-list").style.display = "block";
-    // hide quiz div
-    document.getElementById("questionArea").style.display = "none";
-        }
-        stopTimer();
-    }
+    // // stop timer funcion
+    //  stopTimer() 
+    // if (timeRemaining === o) 
+    // clearInterval(quizInterval);
+    // // show high score div 
+    // document.getElementById("score-list").style.display = "block";
+    // // hide quiz div
+    // document.getElementById("questionArea").style.display = "none";
+    //     }
+    //     stopTimer();
+    // };
+}
 };
  
 function checkAnswer(ele)  {
+    console.log("TEST3")
     if(questions.correct === questions.answersIndex) {
         playerScore++;
     // display score card
