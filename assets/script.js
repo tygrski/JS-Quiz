@@ -32,7 +32,7 @@ var questions = [
     },
     {
         question: "Math.ceil(x)",
-        answers: ["Returns x rounded to its nearest integer", "Returns x rounded down to its nearest integer", " returns the integer part of x", "Returns x rounded up to its nearest integer"],
+        answers: ["Returns x rounded to its nearest integer", "Returns x rounded down to its nearest integer", " Returns the integer part of x", "Returns x rounded up to its nearest integer"],
         correct: 3
     },
     {
@@ -100,12 +100,12 @@ function stopTimer() {
 // load questions . Stop timer
 function loadQuestion() {
  if (questionIndex <= questions.length - 1) {
-    question.textContent = `${(questionIndex + 1)}. ${questions[questionIndex].question}`;
+    question.textContent = `${(questionIndex)}. ${questions[questionIndex].question}`;
     answer1.textContent = questions[questionIndex].answers[0];
     answer2.textContent = questions[questionIndex].answers[1];
     answer3.textContent = questions[questionIndex].answers[2];
     answer4.textContent = questions[questionIndex].answers[3];
-    document.getElementById("link-score-list").style.display = "block"; 
+    document.getElementById("link-score-list").style.display = "none"; 
     
 }else {
     // // stop timer funcion
@@ -122,9 +122,9 @@ function loadQuestion() {
 }
 };
  
-function checkAnswer(ele)  {
+function checkAnswer()  {
     console.log("TEST3")
-    if(questions.correct === questions.answersIndex) {
+    if(questions.answersIndex === questions.correct) {
         playerScore++;
     // display score card
     document.getElementById("playerScore").textContent = playerScore
@@ -138,14 +138,14 @@ function checkAnswer(ele)  {
     // display "incorret"
     document.getElementById("validate").textContent = "Wrong !"
     document.getElementById("validate").style.display = "block";
-    }
-};
+    } 
+}; nextQuestion();
 
 function nextQuestion ()  {
     questionIndex++;
     loadQuestion();
 };
-nextQuestion();
+
 
 // score card function; adds scores together()
  
