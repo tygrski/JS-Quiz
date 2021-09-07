@@ -28,7 +28,7 @@ var questions = [
     {
         question: "Which is a JavaScript Data Type ?",
         answers: ["Words", "True/False", "Number", "Element"],
-        correct1: 2
+        correct: 2
     },
     {
         question: "Math.ceil(x)",
@@ -122,23 +122,23 @@ function loadQuestion() {
 }
 };
  
-function checkAnswer()  {
-    console.log("TEST3")
-    if(questions.answersIndex === questions.correct) {
+function checkAnswer(event) {
+    var currentQuestion = questions[questionIndex];
+    var currentAnswer = currentQuestion.answers[currentQuestion.correct];
+
+    console.log("currentQuestion: ", currentQuestion);
+    console.log("currentAnswer: ", currentAnswer);
+    console.log("event.target.innerText: ", event.target.innerText);
+
+    if (event.target.innerText === currentAnswer) {
+        nextQuestion();
+        console.log("Correct Answer");
         playerScore++;
-    // display score card
-    document.getElementById("playerScore").textContent = playerScore
-    document.getElementById("playerScore").style.display = "block";
-    // display "Correct" 
-    document.getElementById("validate").textContent = "Correct !"
-    document.getElementById("validate").style.display = "block";
-} else {
-    // subtract time
-    timeRemaining -= 5
-    // display "incorret"
-    document.getElementById("validate").textContent = "Wrong !"
-    document.getElementById("validate").style.display = "block";
-    } 
+    } else {
+        console.log("Incorrect Answer");
+        timeRemaining -= 5;
+        nextQuestion();
+    }
 }; nextQuestion();
 
 function nextQuestion ()  {
